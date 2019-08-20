@@ -1,0 +1,50 @@
+version: '3.2'
+
+services:
+  base:
+    build:
+      context: ./docker/
+      dockerfile: base.Dockerfile
+    image: ansible_base
+
+  master:
+    build:
+      context: ./docker/
+      dockerfile: ./master.Dockerfile
+    command: ["/usr/sbin/sshd","-D"]
+    volumes:
+      - ansible_fs:/var/ans
+      - ./:/var/workspace
+
+  host01:
+    depends_on:
+      - master
+    build:
+      context: ./docker/
+      dockerfile: ./host.Dockerfile
+    command: ["/var/run.sh"]
+    volumes:
+     - ansible_fs:/var/ans
+
+  host02:
+    depends_on:
+      - master
+    build:
+      context: ./docker/
+      dockerfile: ./host.Dockerfile
+    command: ["/var/run.sh"]
+    volumes:
+     - ansible_fs:/var/ans
+
+  host03:
+    depends_on:
+      - master
+    build:
+      context: ./docker/
+      dockerfile: ./host.Dockerfile
+    command: ["/var/run.sh"]
+    volumes:
+     - ansible_fs:/var/ans
+
+volumes:
+  ansible_fs:
