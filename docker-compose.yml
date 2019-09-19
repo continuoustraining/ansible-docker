@@ -45,6 +45,6 @@ services:
     command: ["/var/run.sh"]
     volumes:
      - ansible_fs:/var/ans
-
+     
 volumes:
   ansible_fs:

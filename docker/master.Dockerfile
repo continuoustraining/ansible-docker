@@ -7,7 +7,7 @@ RUN apt-get update \
     ansible
 
 # change working directory
-WORKDIR /var/workspace
+WORKDIR /var/ans
 
 # generate RSA key pair to allow master to communicate with managed nodes
 # default private key passphrase is '12345' (not a good idea for production environment ;)
