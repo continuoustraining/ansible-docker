@@ -12,7 +12,7 @@ services:
       context: ./docker/
       dockerfile: ./master.Dockerfile
     command: ["/usr/sbin/sshd","-D"]
-    working_dir: /var/workspace
+    working_dir: /var/workspace/ansible
     volumes:
       - ansible_fs:/var/ans
       - ./:/var/workspace
