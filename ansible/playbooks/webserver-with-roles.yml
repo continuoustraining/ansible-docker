@@ -1,0 +1,6 @@
+- hosts: webservers
+  become: yes
+  vars:
+    domain: webserver.dev.docker.local
+  roles:
+    - webserver
