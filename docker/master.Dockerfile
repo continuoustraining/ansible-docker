@@ -16,4 +16,9 @@ WORKDIR /var/ans
 
 # generate RSA key pair to allow master to communicate with managed nodes
 # default private key passphrase is '12345' (not a good idea for production environment ;)
-RUN ssh-keygen -t rsa -N 12345 -C "master key" -f master_key
+RUN ssh-keygen -t rsa -N "" -C "master key" -f master_key
+
+# allow root without login
+RUN sed -i 's/#PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
+
+RUN ssh-agent bash

@@ -12,6 +12,7 @@ services:
       context: ./docker/
       dockerfile: ./master.Dockerfile
     command: ["/usr/sbin/sshd","-D"]
+    working_dir: /var/workspace
     volumes:
       - ansible_fs:/var/ans
       - ./:/var/workspace
@@ -45,6 +46,6 @@ services:
     command: ["/var/run.sh"]
     volumes:
      - ansible_fs:/var/ans
-     
+
 volumes:
   ansible_fs:
