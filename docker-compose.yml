@@ -24,6 +24,8 @@ services:
       context: ./docker/
       dockerfile: ./host.Dockerfile
     command: ["/var/run.sh"]
+    ports:
+      - 8080:80
     volumes:
      - ansible_fs:/var/ans
 
@@ -34,6 +36,8 @@ services:
       context: ./docker/
       dockerfile: ./host.Dockerfile
     command: ["/var/run.sh"]
+    ports:
+      - 8081:80
     volumes:
      - ansible_fs:/var/ans
 
