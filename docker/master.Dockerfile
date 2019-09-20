@@ -4,6 +4,11 @@ FROM ansible_base:latest
 # install ansible package
 RUN apt-get update \
     && apt-get install --no-install-recommends --no-install-suggests -y \
+    software-properties-common \
+    && apt-add-repository ppa:ansible/ansible
+
+RUN apt-get update \
+    && apt-get install --no-install-recommends --no-install-suggests -y \
     ansible
 
 # change working directory
