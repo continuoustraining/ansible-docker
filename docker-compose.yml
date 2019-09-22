@@ -51,5 +51,17 @@ services:
     volumes:
      - ansible_fs:/var/ans
 
+  loadbalancer:
+    depends_on:
+      - master
+    build:
+      context: ./docker/
+      dockerfile: ./host.Dockerfile
+    command: ["/var/run.sh"]
+    ports:
+      - 9000:80
+    volumes:
+     - ansible_fs:/var/ans
+
 volumes:
   ansible_fs:

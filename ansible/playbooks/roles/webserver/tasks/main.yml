@@ -1,4 +1,8 @@
 ---
 # tasks file for ./roles/webserver
-- include_tasks: install.yml
-- include_tasks: configure.yml
+- name: install servers
+  include: install.yml
+
+- name: configure websites
+  include: configure.yml
+  with_items: domains

@@ -1,6 +1,6 @@
 - name: add vhost dir
   file:
-    path: /var/www/{{domain}}/public_html
+    path: /var/www/{{item}}/public_html
     owner: root
     group: root
     state: directory
@@ -14,16 +14,16 @@
 - name: create home page
   template:
     src: index.html
-    dest: /var/www/{{domain}}/public_html/index.html
+    dest: /var/www/{{item}}/public_html/index.html
 
 - name: create virtual host file
   template:
     src: vhost.conf
-    dest: /etc/apache2/sites-available/{{ domain }}.conf
+    dest: /etc/apache2/sites-available/{{ item }}.conf
 
-- name: a2ensite {{ domain }}
-  command: a2ensite {{ domain }}
+- name: a2ensite {{ item }}
+  command: a2ensite {{ item }}
   args:
-    creates: /etc/apache2/sites-enabled/{{ domain }}.conf
+    creates: /etc/apache2/sites-enabled/{{ item }}.conf
   notify:
     - restart apache2

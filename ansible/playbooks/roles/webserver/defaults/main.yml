@@ -1,4 +1,6 @@
 ---
 # defaults file for ./roles/webserver
 http_port: 80
-domain: webserver.dev.vagrant.local
+domains:
+      - webapp1.dev.docker.local
+      - webapp2.dev.docker.local
